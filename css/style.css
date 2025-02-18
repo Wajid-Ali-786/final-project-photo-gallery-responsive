@@ -1,0 +1,108 @@
+/* Base Styles (Mobile-First Approach) */
+html {
+  scroll-behavior: smooth;  /* Smooth scrolling by default */
+}
+
+body {
+  background-color: #dedede;
+  padding: 5px;
+  margin: 15px;
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+}
+
+/* Grid Container: One Column with 10px Gap */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;  /* One column for mobile */
+  gap: 10px;                   /* 10px gap between rows and columns */
+}
+
+/* Basic Element Styling */
+h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1.95em;
+}
+
+h2 {
+  text-align: center;
+}
+
+li {
+  margin-top: 20px;
+}
+
+.label {
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Default Figure Styling */
+figure {
+  border: 5px solid blue;
+  border-radius: 35px;   /* Rounded corners on mobile */
+  overflow: hidden;
+}
+
+figcaption {
+  text-align: center;
+}
+
+/* --- Tablet View (min-width: 772px) --- */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);  /* Two-column grid */
+  }
+  
+  /* Make figures circular */
+  figure {
+    border-radius: 50%;
+  }
+  
+  /* Make the last figure span both columns */
+  figure:last-of-type {
+    grid-column: span 2;
+  }
+}
+
+/* --- Large Screen View (min-width: 992px) --- */
+@media (min-width: 992px) {
+  /* Remove circular styling */
+  figure {
+    border-radius: 0;
+  }
+  
+  /* Every third figure spans both columns */
+  figure:nth-child(3n) {
+    grid-column: span 2;
+  }
+}
+
+/* --- Extra Large Screen View (min-width: 1200px) --- */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);  /* Three-column grid */
+  }
+  
+  /* For extra large screens, let every fourth figure span all three columns */
+  figure:nth-child(4n) {
+    grid-column: span 3;
+  }
+}
+
+/* --- Prefers Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;  /* Disable smooth scrolling */
+  }
+}
+
+/* --- Dark Color Scheme --- */
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #333;    /* Dark background */
+    color: #f0e68c;            /* Light (yellow-ish) font color */
+    border: 1px solid #000;    /* Black border */
+  }
+}
